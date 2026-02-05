@@ -1,59 +1,70 @@
+
 # Flipkart Review Sentiment Analyzer 🛒
 
-This project is a simple **Sentiment Analysis web application** that predicts whether a Flipkart product review is **Positive** or **Negative**.
+A beginner-friendly **Sentiment Analysis web application** that predicts whether a Flipkart product review is **Positive** or **Negative** using Machine Learning.
 
-The app is built using **Machine Learning and Streamlit** and is deployed on **Hugging Face Spaces**.
+The app is built with **Logistic Regression + TF-IDF**, provides confidence scores, and is deployed on **AWS EC2 using Streamlit**.
+
+---
+
+## 🌐 Live Demo
+
+🔗 **Application URL:**
+
+```
+[http://<YOUR_EC2_PUBLIC_IP>:8501](http://13.201.47.199:8501/)
+```
+Anyone can access this link in a browser.
 
 ---
 
 ## 📌 Project Overview
 
-* Uses customer reviews scraped from Flipkart
-* Converts review text into numerical features using **TF-IDF**
-* Trains a **Logistic Regression** model for sentiment classification
-* Displays prediction along with **confidence score**
-* Provides real-time sentiment analysis through a Streamlit web app
+Customer reviews contain valuable insights about product quality and user experience.
+This project classifies Flipkart product reviews into **positive or negative sentiment** and presents the results through a simple web interface.
 
 ---
 
 ## 🧠 Machine Learning Approach
 
-* **Text Preprocessing**
+### Text Preprocessing
 
-  * Lowercasing
-  * Removing special characters
-  * Stopword removal
-  * Lemmatization
+* Lowercasing text
+* Removing special characters
+* Stopword removal
+* Lemmatization
 
-* **Feature Extraction**
+### Feature Extraction
 
-  * TF-IDF Vectorization
+* TF-IDF (Term Frequency–Inverse Document Frequency)
 
-* **Model Used**
+### Model Used
 
-  * Logistic Regression
+* Logistic Regression
 
-* **Evaluation Metric**
+### Evaluation Metric
 
-  * F1-Score
+* F1-Score
 
 ---
 
 ## 🖥️ Web Application
 
 * Built using **Streamlit**
-* User enters a review text
-* App predicts:
+* User enters a product review
+* The app:
 
-  * Positive or Negative sentiment
-  * Confidence percentage
+  * Cleans the text
+  * Converts it into TF-IDF features
+  * Predicts sentiment (Positive / Negative)
+  * Displays a confidence percentage
 
 ---
 
 ## 📂 Project Structure
 
 ```
-flipkart-sentiment-analyzer/
+flipkart-review-sentiment-analysis/
 │
 ├── app.py
 ├── sentiment_model.pkl
@@ -66,7 +77,35 @@ flipkart-sentiment-analyzer/
 
 ## 🚀 Deployment
 
-The application is deployed using **Hugging Face Spaces** with Streamlit as the SDK.
+The application is deployed on an **AWS EC2 instance** and runs in the background using `nohup`.
+
+### Key deployment details:
+
+* Streamlit app runs on port **8501**
+* Virtual environment used for dependency management
+* Public access enabled via EC2 Security Group
+
+### Command used to run the app:
+
+```bash
+nohup streamlit run app.py --server.port 8501 --server.address 0.0.0.0 &
+```
+
+---
+
+## 📊 Example
+
+**Input Review:**
+
+```
+It breaks easily and feels very cheap.
+```
+
+**Output:**
+
+```
+❌ Negative Review (Confidence shown)
+```
 
 ---
 
@@ -78,25 +117,16 @@ The application is deployed using **Hugging Face Spaces** with Streamlit as the 
 * NLTK
 * Pandas
 * NumPy
-
----
-
-## 📊 Example Input
-
-```
-The shuttle quality is very poor and breaks easily.
-```
-
-**Output:**
-❌ Negative Review (Confidence shown)
+* AWS EC2
 
 ---
 
 ## 📌 Future Improvements
 
-* Use advanced models like BERT
-* Add sentiment explanation using keywords
+* Add neutral sentiment classification
+* Use transformer models like BERT
 * Improve handling of very short reviews
+* Add keyword-based explanation for predictions
 
 ---
 
@@ -104,5 +134,3 @@ The shuttle quality is very poor and breaks easily.
 
 **Uma Mahesh**
 Aspiring Data Analyst & Cricket Analyst
-
-
