@@ -9,11 +9,9 @@ The app is built with **Logistic Regression + TF-IDF**, provides confidence scor
 
 ## 🌐 Live Demo
 
-🔗 **Application URL:**
+🔗 **Application URL:**  
+[Click here to open the app](http://13.201.47.199:8501)
 
-```
-[http://<YOUR_EC2_PUBLIC_IP>:8501](http://13.201.47.199:8501/)
-```
 Anyone can access this link in a browser.
 
 ---
