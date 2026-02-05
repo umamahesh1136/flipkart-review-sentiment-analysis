@@ -69,12 +69,15 @@ if st.button("Predict Sentiment"):
         review_vector = vectorizer.transform([cleaned_review])
 
         prediction = model.predict(review_vector)[0]
-        probability = model.predict_proba(review_vector)[0][1]
+probability = model.predict_proba(review_vector)[0][1]
 
-        if prediction == 1:
-            st.success(f"✅ Positive Review ({probability*100:.1f}% confidence)")
-        else:
-            st.error(f"❌ Negative Review ({(1-probability)*100:.1f}% confidence)")
+if probability >= 0.6:
+    st.success(f"✅ Positive Review ({probability*100:.1f}% confidence)")
+elif probability <= 0.4:
+    st.error(f"❌ Negative Review ({(1-probability)*100:.1f}% confidence)")
+else:
+    st.warning("⚠️ Sentiment unclear. Please enter a more detailed review.")
+
 # ===============================
 # Footer
 # ===============================
@@ -85,4 +88,5 @@ st.markdown("""
     <br>
     Sentiment Analysis on Real-time Flipkart Reviews
 </div>
+
 """, unsafe_allow_html=True)
